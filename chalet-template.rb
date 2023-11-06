@@ -3,7 +3,7 @@
 cask "chalet" do
 	version "${version}"
 	sha256 arm: "${sha_arm}",
-	       intel: "${sha_x86}"
+	       intel: "${sha_x64}"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
