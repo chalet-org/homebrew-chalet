@@ -7,7 +7,7 @@ cask "chalet" do
 	arch arm: "arm64",
 	     intel: "x86_64"
 
-	url "https://github.com/chalet-org/chalet/releases/download/v#{version}/chalet-#{arch}-apple-darwin.zip"
+	url "https://github.com/chalet-org/chalet/releases/download/#{version}/chalet-#{arch}-apple-darwin.zip"
 	name "Chalet"
 	desc "A cross-platform project format & build tool for C/C++"
 	homepage "https://www.chalet-work.space"

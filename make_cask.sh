@@ -5,31 +5,24 @@ if [[ $OSTYPE != 'darwin'* ]]; then
 	exit 1
 fi
 
-VERSION=$1
+TAG=$1
 CWD="$PWD"
 
-if [[ $VERSION == '' ]]; then
+if [[ $TAG == '' ]]; then
 	echo 'Error: please provide a version # (ie. 0.0.1)'
-	exit 1
-fi
-
-if [[ "$VERSION" =~ ^[0-9]\.[0-9]\.[0-9]{1,2}$ ]]; then
-	echo -n ""
-else
-	echo 'Error: please provide a version # in the following format: #.#.#'
 	exit 1
 fi
 
 _get_file_from_github() {
 	FILE=$1
 	OUTPUT=$2
-	curl -LJO "https://github.com/chalet-org/chalet/releases/download/v$VERSION/$FILE"
+	curl -LJO "https://github.com/chalet-org/chalet/releases/download/$TAG/$FILE"
 	if  [[ $? != 0 ]]; then
 		exit 1
 	fi
 }
 
-echo "'$VERSION'"
+echo "'$TAG'"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/releases"
 echo "$SCRIPT_DIR"
@@ -53,7 +46,7 @@ echo "'$SHA_X86'"
 
 cd "$SCRIPT_DIR"
 
-cat > "$VERSION.csv" << END
+cat > "$TAG.csv" << END
 arm64,$SHA_ARM64
 x86_64,$SHA_X86
 END
