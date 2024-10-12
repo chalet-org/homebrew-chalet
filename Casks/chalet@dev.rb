@@ -1,6 +1,6 @@
 # Chalet Homebrew Cask
 #
-cask "chalet" do
+cask "chalet@dev" do
 	version "snapshot-main-202410120135"
 	sha256 arm: "c09e95fd409a36727c92f01c9ae2b4e4afb5635ee18a0d5f55e114f05f6d0aa8",
 	       intel: "3e66ec8323e0cdb917b502e54f9550f7857e5717ed929cc4d372b026440979cd"

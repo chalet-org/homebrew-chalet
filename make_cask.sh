@@ -15,9 +15,9 @@ fi
 
 CHANNEL=
 if [[ "$TAG" =~ ^v[0-9]\.[0-9]\.[0-9]{1,2}$ ]]; then
-	CHANNEL=standard
+	CHANNEL=
 else
-	CHANNEL=dev
+	CHANNEL=@dev
 fi
 
 _get_file_from_github() {
@@ -56,14 +56,14 @@ echo "'$SHA_X86'"
 cd "$CASKS_DIR"
 
 OUTPUT_FILE="chalet.rb"
-if [[ "$CHANNEL" != "standard" ]]; then
-	OUTPUT_FILE="chalet@$CHANNEL.rb"
+if [[ "$CHANNEL" != "" ]]; then
+	OUTPUT_FILE="chalet$CHANNEL.rb"
 fi
 
 cat > "$OUTPUT_FILE" << END
 # Chalet Homebrew Cask
 #
-cask "chalet" do
+cask "chalet$CHANNEL" do
 	version "${TAG}"
 	sha256 arm: "${SHA_ARM64}",
 	       intel: "${SHA_X86}"
