@@ -14,7 +14,7 @@ cask "chalet" do
 
 	livecheck do
 		url :stable
-		regex(/^v?(\d+(?:\.\d+)+)$/i)
+		regex(/^[\w\d-]+$/i)
 	end
 
 	auto_updates true
