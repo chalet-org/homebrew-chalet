@@ -1,9 +1,9 @@
 # Chalet Homebrew Cask
 #
 cask "chalet@dev" do
-	version "snapshot-main-202412240226"
-	sha256 arm: "564081c06fb68d2168439810c014e0deca9fe4350dc1c8ead44d0fb6bc839929",
-	       intel: "492111200b705f77864e4a9e699b3132443f8b6614a15140274bc2f982652ada"
+	version "snapshot-v0.8.0-202501142311"
+	sha256 arm: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
+	       intel: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
