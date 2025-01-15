@@ -53,15 +53,15 @@ SHA_X86=$(shasum -a 256 "$FILE_X86" | cut -d ' ' -f1)
 echo "'$SHA_ARM64'"
 echo "'$SHA_X86'"
 
-cd "$CASKS_DIR"
+# cd ""
 
-OUTPUT_FILE="chalet.rb"
+OUTPUT_FILE="$CASKS_DIR/chalet.rb"
 if [[ "$CHANNEL" != "" ]]; then
-	OUTPUT_FILE="chalet$CHANNEL.rb"
+	OUTPUT_FILE="$CASKS_DIR/chalet$CHANNEL.rb"
 fi
 
 cat > "$OUTPUT_FILE" << END
-# Chalet Homebrew Cask
+# Chalet Homebrew Cask (WIP)
 #
 cask "chalet$CHANNEL" do
 	version "${TAG}"
@@ -85,6 +85,11 @@ cask "chalet$CHANNEL" do
 
 	binary "chalet"
 end
+END
+
+cat > "$SCRIPT_DIR/$TAG.csv" << END
+arm64,$SHA_ARM64
+x86_64,$SHA_X86
 END
 
 rm -rf "$TMP_DIR"

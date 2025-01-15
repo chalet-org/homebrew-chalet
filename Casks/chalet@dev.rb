@@ -1,9 +1,9 @@
-# Chalet Homebrew Cask
+# Chalet Homebrew Cask (WIP)
 #
 cask "chalet@dev" do
 	version "0.8.0"
-	sha256 arm: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
-	       intel: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+	sha256 arm: "ad2119fa32c764b8cde78c30d8ccab3d2ed995f8cbd8125d7a61c48f474067d8",
+	       intel: "bd6a336a6a519372fe55cee79f787e356748d42fc5faa2fe71b0d9f86b0b5fa1"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
