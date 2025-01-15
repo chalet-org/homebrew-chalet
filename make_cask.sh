@@ -53,24 +53,22 @@ SHA_X86=$(shasum -a 256 "$FILE_X86" | cut -d ' ' -f1)
 echo "'$SHA_ARM64'"
 echo "'$SHA_X86'"
 
-# cd ""
+generate_for_channel() {
+	CHAN="$1"
+	VPREFIX="$2"
+	OUTPUT_FILE="$CASKS_DIR/chalet$CHAN.rb"
 
-OUTPUT_FILE="$CASKS_DIR/chalet.rb"
-if [[ "$CHANNEL" != "" ]]; then
-	OUTPUT_FILE="$CASKS_DIR/chalet$CHANNEL.rb"
-fi
-
-cat > "$OUTPUT_FILE" << END
+	cat > "$OUTPUT_FILE" << END
 # Chalet Homebrew Cask (WIP)
 #
-cask "chalet$CHANNEL" do
-	version "${TAG}"
+cask "chalet$CHAN" do
+	version "${TAG//v}"
 	sha256 arm: "${SHA_ARM64}",
 	       intel: "${SHA_X86}"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
-	url "https://github.com/chalet-org/chalet/releases/download/#{version}/chalet-#{arch}-apple-darwin.zip"
+	url "https://github.com/chalet-org/chalet/releases/download/${VPREFIX}#{version}/chalet-#{arch}-apple-darwin.zip"
 	name "Chalet"
 	desc "A cross-platform project format & build tool for C/C++"
 	homepage "https://www.chalet-work.space"
@@ -86,11 +84,20 @@ cask "chalet$CHANNEL" do
 	binary "chalet"
 end
 END
+}
 
-cat > "$SCRIPT_DIR/$TAG.csv" << END
+if [[ "$CHANNEL" == "" ]]; then
+	generate_for_channel "" "v"
+	generate_for_channel "@dev" "v"
+
+	cat > "$SCRIPT_DIR/$TAG.csv" << END
 arm64,$SHA_ARM64
 x86_64,$SHA_X86
 END
+
+else
+	generate_for_channel "$CHANNEL" ""
+fi
 
 rm -rf "$TMP_DIR"
 
