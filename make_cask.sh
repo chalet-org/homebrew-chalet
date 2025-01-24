@@ -20,13 +20,19 @@ else
 	CHANNEL=@dev
 fi
 
+sleep 2
+
 _get_file_from_github() {
 	FILE=$1
 	OUTPUT=$2
-	curl -LJO "https://github.com/chalet-org/chalet/releases/download/$TAG/$FILE"
-	if  [[ $? != 0 ]]; then
+
+	RESULT=$(curl "https://github.com/chalet-org/chalet/releases/download/$TAG/$FILE" &>/dev/null)
+	if [[ "$RESULT" == "Not Found" ]]; then
+		echo "The build artifact '$FILE' for the tag '$TAG' was not found"
 		exit 1
 	fi
+
+	curl -LJO "https://github.com/chalet-org/chalet/releases/download/$TAG/$FILE"
 }
 
 echo "'$TAG'"
