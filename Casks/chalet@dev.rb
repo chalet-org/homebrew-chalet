@@ -2,8 +2,8 @@
 #
 cask "chalet@dev" do
 	version "0.8.1"
-	sha256 arm: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
-	       intel: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+	sha256 arm: "978e8ce2f65cb5471b5cb26348abeaa1fceb2814cbb1eb203568409530c0f737",
+	       intel: "ba030497381037f253a67ca8ce5a22a58a5d286b8d28644512892ec20c9da905"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
