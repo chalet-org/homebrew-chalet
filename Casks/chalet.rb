@@ -2,8 +2,8 @@
 #
 cask "chalet" do
 	version "0.8.18"
-	sha256 arm: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5",
-	       intel: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+	sha256 arm: "45bf7d54a2ff2e6f1703233db28d3f1ad983f719149c289c492d7cbe3933bd3d",
+	       intel: "7b0c67cd7e38b9faa5df9035bb0b31e98b81d9a822b33b792a0b96330e608154"
 	arch arm: "arm64",
 	     intel: "x86_64"
 
