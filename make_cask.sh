@@ -9,7 +9,7 @@ TAG=$1
 CWD="$PWD"
 
 if [[ $TAG == '' ]]; then
-	echo 'Error: please provide a version # (ie. 0.0.1)'
+	echo 'Error: please provide a version # (ie. v0.0.1)'
 	exit 1
 fi
 
@@ -56,8 +56,17 @@ _get_file_from_github "$FILE_X86"
 SHA_ARM64=$(shasum -a 256 "$FILE_ARM64" | cut -d ' ' -f1)
 SHA_X86=$(shasum -a 256 "$FILE_X86" | cut -d ' ' -f1)
 
-echo "'$SHA_ARM64'"
-echo "'$SHA_X86'"
+verify_checksum() {
+	if [[ "$1" == "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5" ]]; then
+		echo "Failed to download one of the required files for the homebrew release. Please run this again manually from the homebrew-chalet repo."
+		exit 1
+	else
+		echo "'$1'"
+	fi
+}
+
+verify_checksum "$SHA_ARM64"
+verify_checksum "$SHA_X86"
 
 generate_for_channel() {
 	CHAN="$1"
